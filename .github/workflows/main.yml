@@ -25,8 +25,9 @@ jobs:
       - uses: actions/checkout@v2
       
       # The actual steps
-      - name: push container
-        run: heroku container:push worker
+
+      - name: build container
+        run: docker build -t registry.heroku.com/eathalal/worker .
         
       - name: release container
-        run: heroku container:release worker
+        run: docker push registry.heroku.com/eathalal/worker
