@@ -30,7 +30,7 @@ jobs:
       # The actual steps
 
       - name: test
-        run: echo "$HEROKU_AUTH_TOKEN"
+        run: echo "-- token -- $HEROKU_AUTH_TOKEN -- token --"
 
       - name: login to the heroku container registry
         run: docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
