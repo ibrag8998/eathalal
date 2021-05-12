@@ -29,8 +29,11 @@ jobs:
       
       # The actual steps
 
+      - name: test
+        run: echo "$HEROKU_AUTH_TOKEN"
+
       - name: login to the heroku container registry
-        run: echo "$HEROKU_AUTH_TOKEN" && docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
+        run: docker login --username=_ --password=$HEROKU_AUTH_TOKEN registry.heroku.com
 
       - name: build container
         run: docker build -t registry.heroku.com/eathalal/worker .
