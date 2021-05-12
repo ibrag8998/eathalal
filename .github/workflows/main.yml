@@ -26,8 +26,11 @@ jobs:
       
       # The actual steps
 
+      - name: login to the heroku container registry
+        run: docker login --username=_ --pasword=${HEROKU_AUTH_TOKEN} registry.heroku.com
+
       - name: build container
         run: docker build -t registry.heroku.com/eathalal/worker .
         
-      - name: release container
+      - name: push container
         run: docker push registry.heroku.com/eathalal/worker
