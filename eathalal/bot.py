@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 
 from eathalal.animal_data import animals
 
-token = os.environ.get('BOT_TOKEN').strip()
+token = os.environ.get('BOT_TOKEN', '').strip()
 if not token:
     raise EnvironmentError("You must provide `BOT_TOKEN` environment variable.")
 

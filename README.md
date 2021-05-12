@@ -23,8 +23,9 @@ python app.py
 
 ### Продакшн
 
-Тут уже удобнее с докером:
+Деплой на хероку:
 
 ```shell
-docker-compose up --build
+heroku container:push worker
+heroku container:release worker
 ```
