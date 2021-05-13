@@ -33,11 +33,16 @@ jobs:
           registry: registry.heroku.com
           username: _
           password: ${{ secrets.HEROKU_AUTH_TOKEN }}
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_AUTH_TOKEN }}
+          heroku_app_name: "eathalalbot"
+          heroku_email: "ibragdzh@gmail.com"
+          usedocker: true
+          docker_heroku_process_type: worker
       
       # The actual steps
-
-#      - name: login to the heroku container registry
-#        run: docker login --username=_ --password=${{ secrets.HEROKU_AUTH_TOKEN }} registry.heroku.com
 
       - name: build container
         run: docker build -t registry.heroku.com/eathalalbot/worker .
