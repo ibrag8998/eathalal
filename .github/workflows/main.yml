@@ -26,6 +26,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      # Docker login
+      - uses: docker/login-action@v1
+        with:
+          registry: registry.heroku.com
+          username: _
+          password: ${{ secrets.HEROKU_AUTH_TOKEN }}
       
       # The actual steps
 
@@ -33,12 +40,7 @@ jobs:
 #        run: docker login --username=_ --password=${{ secrets.HEROKU_AUTH_TOKEN }} registry.heroku.com
 
       - name: build container
-        run: docker build -t registry.heroku.com/eathalal/worker .
+        run: docker build -t registry.heroku.com/eathalalbot/worker .
         
       - name: push container
-        run: docker push registry.heroku.com/eathalal/worker
-        uses: docker/login-action@v1
-        with:
-          registry: registry.heroku.com
-          username: _
-          password: ${{ secrets.HEROKU_AUTH_TOKEN }}
+        run: docker push registry.heroku.com/eathalalbot/worker
